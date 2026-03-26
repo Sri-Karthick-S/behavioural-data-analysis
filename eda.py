@@ -6,35 +6,22 @@ from scipy import stats
 import warnings
 warnings.filterwarnings("ignore")
 
-# ==============================================================================
-# 1. LOAD
-# ==============================================================================
+# Loading the data
 df_raw = pd.read_csv("mxmh_survey_results.csv")
 print("Shape:", df_raw.shape)
 print("\nColumns:\n", df_raw.columns.tolist())
-
-# ==============================================================================
-# 2. DATA QUALITY REPORT
-# ==============================================================================
-print("\n── Data Types ──")
 print(df_raw.dtypes)
 
-print("\n── Missing Values ──")
 missing = df_raw.isnull().sum()
 missing_pct = (missing / len(df_raw) * 100).round(2)
 missing_report = pd.DataFrame({"Missing Count": missing, "Missing %": missing_pct})
 missing_report = missing_report[missing_report["Missing Count"] > 0].sort_values("Missing %", ascending=False)
 print(missing_report)
 
-print("\n── Duplicates ──")
 print(f"Duplicate rows: {df_raw.duplicated().sum()}")
-
-print("\n── Basic Stats ──")
 print(df_raw.describe())
 
-# ==============================================================================
-# 3. PREPROCESSING
-# ==============================================================================
+# Preprocessing
 genre_columns = [col for col in df_raw.columns if col.startswith("Frequency [")]
 selected_columns = [
     "Age", "Primary streaming service", "Hours per day", "While working",
@@ -44,7 +31,6 @@ selected_columns = [
 
 df = df_raw[selected_columns].copy()
 
-# Impute categorical columns with mode
 for col in ["Instrumentalist", "Foreign languages", "While working",
             "Primary streaming service", "Composer"]:
     df[col].fillna(df[col].mode()[0], inplace=True)
@@ -52,14 +38,12 @@ for col in ["Instrumentalist", "Foreign languages", "While working",
 # Impute Age with median
 df["Age"] = df["Age"].fillna(df["Age"].median())
 
-# Drop rows with missing Music effects
 df.dropna(subset=["Music effects"], inplace=True)
 
 # Remove outliers
 df = df[(df["Age"] >= 10) & (df["Age"] <= 90)]
 df = df[df["Hours per day"] <= 24]
 
-# Map genre frequency to numeric
 freq_map = {"Never": 0, "Rarely": 1, "Sometimes": 2, "Very frequently": 3}
 df[genre_columns] = df[genre_columns].apply(lambda x: x.map(freq_map))
 
@@ -92,9 +76,7 @@ df[float_cols] = df[float_cols].astype(int)
 
 print(f"\nClean dataset shape: {df.shape}")
 
-# ==============================================================================
-# 4. UNIVARIATE ANALYSIS
-# ==============================================================================
+# Univariate Analysis
 fig, axes = plt.subplots(2, 3, figsize=(16, 9))
 fig.suptitle("Univariate Analysis")
 
