@@ -35,24 +35,6 @@ Looks at whether people accurately assess how music affects their mental health.
 
 ---
 
-## Project Structure
-
-```
-Music_mood_misconception/
-|-- app.R                    # R Shiny dashboard (flexdashboard)
-|-- eda_music_mental_health.py  # Python EDA and preprocessing script
-|-- data/
-|   |-- mxmh_survey_results.csv   # Original dataset from Kaggle
-|   |-- mxmh_cleaned.csv          # Cleaned dataset used by the dashboard
-|-- screenshots/
-|   |-- understanding_audience.png
-|   |-- genre_wellness.png
-|   |-- perception_reality.png
-|-- README.md
-```
-
----
-
 ## How to Run Locally
 
 **Prerequisites**
@@ -77,7 +59,7 @@ Python packages required (for preprocessing):
 2. Place `mxmh_survey_results.csv` inside the `data/` folder
 3. Run the Python script to generate the cleaned dataset:
    ```
-   python eda_music_mental_health.py
+   python eda.py
    ```
 4. Open `app.R` in RStudio and click Run App, or run from the terminal:
    ```
@@ -97,13 +79,16 @@ Source: https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results
 ## Screenshots
 
 **Understanding the Audience**
-![Understanding the Audience](screenshots/understanding_audience.png)
+![Understanding the Audience]<img width="1568" height="698" alt="image" src="https://github.com/user-attachments/assets/1e203f56-b6a7-40e2-b448-4bd2b4278018" />
+
 
 **Genre and Wellness Patterns**
-![Genre and Wellness](screenshots/genre_wellness.png)
+![Genre and Wellness]<img width="1568" height="703" alt="image" src="https://github.com/user-attachments/assets/c90a5df5-71cf-4730-a9b0-a1b978cdaceb" />
+
 
 **Perception vs Reality**
-![Perception vs Reality](screenshots/perception_reality.png)
+![Perception vs Reality]<img width="1917" height="856" alt="image" src="https://github.com/user-attachments/assets/c93fe319-cf8b-4573-baad-a0ff1eedff01" />
+
 
 ---
 
