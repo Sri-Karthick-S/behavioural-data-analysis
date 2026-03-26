@@ -79,15 +79,15 @@ Source: https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results
 ## Screenshots
 
 **Understanding the Audience**
-![Understanding the Audience]<img width="1568" height="698" alt="image" src="https://github.com/user-attachments/assets/1e203f56-b6a7-40e2-b448-4bd2b4278018" />
+<img width="1568" height="698" alt="image" src="https://github.com/user-attachments/assets/1e203f56-b6a7-40e2-b448-4bd2b4278018" />
 
 
 **Genre and Wellness Patterns**
-![Genre and Wellness]<img width="1568" height="703" alt="image" src="https://github.com/user-attachments/assets/c90a5df5-71cf-4730-a9b0-a1b978cdaceb" />
+<img width="1568" height="703" alt="image" src="https://github.com/user-attachments/assets/c90a5df5-71cf-4730-a9b0-a1b978cdaceb" />
 
 
 **Perception vs Reality**
-![Perception vs Reality]<img width="1917" height="856" alt="image" src="https://github.com/user-attachments/assets/c93fe319-cf8b-4573-baad-a0ff1eedff01" />
+<img width="1917" height="856" alt="image" src="https://github.com/user-attachments/assets/c93fe319-cf8b-4573-baad-a0ff1eedff01" />
 
 
 ---
