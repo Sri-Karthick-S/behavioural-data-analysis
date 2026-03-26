@@ -104,9 +104,7 @@ plt.tight_layout()
 plt.savefig("eda_01_univariate.png", bbox_inches="tight")
 plt.show()
 
-# ==============================================================================
-# 5. MENTAL HEALTH INDICATORS
-# ==============================================================================
+# Mental Health Indicators
 mh_cols = ["Anxiety", "Depression", "Insomnia", "OCD"]
 
 fig, axes = plt.subplots(1, 4, figsize=(16, 5))
@@ -127,9 +125,7 @@ plt.tight_layout()
 plt.savefig("eda_03_mh_correlation.png", bbox_inches="tight")
 plt.show()
 
-# ==============================================================================
-# 6. GENRE vs MENTAL HEALTH
-# ==============================================================================
+# Bivariate Analysis
 fig, axes = plt.subplots(2, 2, figsize=(16, 10))
 fig.suptitle("Genre vs Mental Health Indicators")
 for ax, col in zip(axes.flatten(), mh_cols):
@@ -141,9 +137,6 @@ plt.tight_layout()
 plt.savefig("eda_04_genre_vs_mh.png", bbox_inches="tight")
 plt.show()
 
-# ==============================================================================
-# 7. LISTENING HOURS vs DISTRESS
-# ==============================================================================
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
 fig.suptitle("Listening Hours vs Distress")
 
@@ -164,9 +157,6 @@ plt.tight_layout()
 plt.savefig("eda_05_hours_vs_distress.png", bbox_inches="tight")
 plt.show()
 
-# ==============================================================================
-# 8. AGE GROUP PATTERNS
-# ==============================================================================
 age_order = ["10-20", "21-30", "31-40", "41-50", "51-60", "61+"]
 
 fig, axes = plt.subplots(1, 2, figsize=(14, 5))
@@ -185,9 +175,7 @@ plt.tight_layout()
 plt.savefig("eda_06_age_patterns.png", bbox_inches="tight")
 plt.show()
 
-# ==============================================================================
-# 9. PERCEPTION vs REALITY
-# ==============================================================================
+
 df["MH_Category"] = pd.cut(
     df["Total Distress Score"],
     bins=[-1, 10, 20, 40],
@@ -218,9 +206,7 @@ plt.tight_layout()
 plt.savefig("eda_07_perception_reality.png", bbox_inches="tight")
 plt.show()
 
-# ==============================================================================
-# 10. STATISTICAL TESTS
-# ==============================================================================
+# Statistical Tests
 print("\n" + "="*60)
 print("STATISTICAL TESTS")
 print("="*60)
@@ -242,15 +228,5 @@ chi2, p, dof, _ = stats.chi2_contingency(ct)
 print(f"\n[Chi-Square] Music Effects vs Distress Category")
 print(f"  chi2={chi2:.2f}, dof={dof}, p={p:.4f} → {'Significant' if p < 0.05 else 'Not significant'}")
 
-# Mann-Whitney: Work listeners vs non-work listeners
-work_yes = df[df["While working"] == 1]["Total Distress Score"]
-work_no  = df[df["While working"] == 0]["Total Distress Score"]
-stat, p = stats.mannwhitneyu(work_yes, work_no, alternative="two-sided")
-print(f"\n[Mann-Whitney] Distress: Work listeners vs Non-work listeners")
-print(f"  U={stat:.0f}, p={p:.4f} → {'Significant' if p < 0.05 else 'Not significant'}")
-
-# ==============================================================================
-# 11. EXPORT
-# ==============================================================================
 df.to_csv("mxmh_cleaned.csv", index=False, encoding="utf-8")
 print(f"\nExported: mxmh_cleaned.csv | Shape: {df.shape}")
